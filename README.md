@@ -28,8 +28,9 @@ from top to bottom and left to right.
 
 ### Package Reference
 
-| Module        | Types | Constructors | Modifiers | Rendering | Queries   
-| ------------- |---------------
+
+| Module        | Types | Constructors | Modifiers | Rendering | Queries |
+| --- | --- | --- | --- | --- | --- |
 | DOM           | Node<br>Property<br>Element | | | | |
 | DOM.Program   | Setup | setup | onLoad<br>update<br>updateWithCmds<br>subscribe<br> subscribeWithParams | run<br>runWithFlags<br>customWithFlags | |
 | DOM.Node      | | leaf<br>textWrapper<br>container | | | |
