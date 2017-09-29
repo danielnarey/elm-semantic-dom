@@ -1,5 +1,5 @@
 {
-    "version": "1.0.0",
+    "version": "1.0.1",
     "summary": "Syntactic sugar for cooking with Elm VirtualDom",
     "repository": "https://github.com/danielnarey/elm-semantic-dom.git",
     "license": "BSD3",
