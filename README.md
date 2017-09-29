@@ -43,5 +43,5 @@ the conflict when there is a need to manage DOM effects.
 | DOM.Style     | | toProperty | | | |
 | DOM.Keyed     | | container<br>node | | | |
 | DOM.Lazy      | | container | | toNode<br>eval | |
-| DOM.Svg       | | leaf<br>textWrapper<br>container<br>element | | | |
+| DOM.Svg       | | leaf<br>textWrapper<br>container<br>element<br>wrapNodes | | | |
 | DOM.Text      | | node | | | | |
