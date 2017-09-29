@@ -1,4 +1,4 @@
-module DOM.Keyed exposing
+module Dom.Keyed exposing
   ( container, node )
 
 {-| Support for the VirtualDom `keyedNode` optimization
@@ -21,19 +21,19 @@ From the *elm-lang/html* documentation:
 -}
 
 import VirtualDom
-import DOM
-import DOM.Element
-import DOM.Lazy
+import Dom
+import Dom.Element
+import Dom.Lazy
 
 
 {-| Construct a container element where the child nodes are keyed with unique
-identifiers in order to optimize updates to the DOM; the first argument gives
+identifiers in order to optimize updates to the Dom; the first argument gives
 the tag, the second argument is a boolean indicating whether the `lazy`
 optimization should also be applied to the keyed children, and the third
 argument is a list of keyed element records.
 
 -}
-container : String -> Bool -> List (String, DOM.Element msg) -> DOM.Element msg
+container : String -> Bool -> List (String, Dom.Element msg) -> Dom.Element msg
 container htmlTag lazyChildren keyedList =
   let
     (ids, elements) =
@@ -43,10 +43,10 @@ container htmlTag lazyChildren keyedList =
     renderer =
       case lazyChildren of
         True ->
-          DOM.Lazy.toNode
+          Dom.Lazy.toNode
 
         False ->
-          DOM.Element.toNode
+          Dom.Element.toNode
 
   in
     { tag = htmlTag
@@ -63,6 +63,6 @@ container htmlTag lazyChildren keyedList =
 
 {-| Alias for `VirtualDom.keyedNode`
 -}
-node : String -> List (DOM.Property msg) -> List (String, DOM.Node msg) -> DOM.Node msg
+node : String -> List (Dom.Property msg) -> List (String, Dom.Node msg) -> Dom.Node msg
 node =
   VirtualDom.keyedNode

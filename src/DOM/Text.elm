@@ -1,15 +1,15 @@
-module DOM.Text exposing
+module Dom.Text exposing
   ( node )
 
 {-| Construct a text node
 -}
 
 import VirtualDom
-import DOM
+import Dom
 
 
 {-| Alias for `VirtualDom.text`
 -}
-node : String -> DOM.Node msg
+node : String -> Dom.Node msg
 node =
   VirtualDom.text

@@ -1,4 +1,4 @@
-module DOM.Attribute exposing
+module Dom.Attribute exposing
   ( string, int, float, namespaced )
 
 {-|
@@ -13,7 +13,7 @@ nonstandard HTML attributes.
 See
 [here](https://stackoverflow.com/questions/3919291/when-to-use-setattribute-vs-attribute-in-javascript)
 for some background on when to use the functions in this module versus the
-functions in `DOM.Property`.
+functions in `Dom.Property`.
 
 @docs string, int, float, namespaced
 
@@ -27,9 +27,9 @@ import Json.Encode
 the *value* and the second argument gives the *key*
 
     myGraphics
-      |> DOM.Svg.container "svg"
+      |> Dom.Svg.container "svg"
         [ "viewbox"
-          |> DOM.Attribute.string "0 0 400 400"
+          |> Dom.Attribute.string "0 0 400 400"
         ]
 
 -}
@@ -44,11 +44,11 @@ to a string; the first argument gives the *value* and the second argument gives
 the *key*
 
     "Hello World!"
-      |> DOM.Svg.textWrapper "text"
+      |> Dom.Svg.textWrapper "text"
         [ "x"
-          |> DOM.Attribute.int 200
+          |> Dom.Attribute.int 200
         , "y"
-          |> DOM.Attribute.int 200
+          |> Dom.Attribute.int 200
         ]
 
 -}
@@ -64,9 +64,9 @@ be converted to a string; the first argument gives the *value* and the second
 argument gives the *key*
 
     myShapeElement
-      |> DOM.Element.addAttribute
+      |> Dom.Element.addAttribute
         ( "stroke-width"
-          |> DOM.Attribute.float 0.5
+          |> Dom.Attribute.float 0.5
         )
 
 -}
@@ -82,12 +82,12 @@ namespace prefix and URL, the second argument is the value, and the third
 argument is the key
 
     "script"
-      |> DOM.Element.leaf
-      |> DOM.Element.withAttributes
+      |> Dom.Element.leaf
+      |> Dom.Element.withAttributes
         [ "href"
-          |> DOM.Attribute.namespaced ("xlink", "http://www.w3.org/1999/xlink") "cool-script.js"
+          |> Dom.Attribute.namespaced ("xlink", "http://www.w3.org/1999/xlink") "cool-script.js"
         , "type"
-          |> DOM.Attribute.string "text/ecmascript"
+          |> Dom.Attribute.string "text/ecmascript"
         ]
 
 See

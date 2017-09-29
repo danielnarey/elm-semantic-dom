@@ -1,4 +1,4 @@
-module DOM exposing
+module Dom exposing
   ( Node, Property, Element )
 
 {-| Type declarations
@@ -38,7 +38,7 @@ By using a record to temporarily store data about a node, we can partially
 construct that node with some data, but delay building it until all of the data
 has been assembled. In this way, all of a node's data is available to be
 modified until it is either placed in a container element or passed as an
-argument to the `DOM.Element.toNode` function.
+argument to the `Dom.Element.toNode` function.
 
 -}
 type alias Element msg =

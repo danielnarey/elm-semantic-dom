@@ -1,4 +1,4 @@
-module DOM.Property exposing
+module Dom.Property exposing
   ( bool, string, int, float )
 
 {-|
@@ -12,7 +12,7 @@ The functions in this module wrap `VirtualDom.property`.
 See
 [here](https://stackoverflow.com/questions/3919291/when-to-use-setattribute-vs-attribute-in-javascript)
 for some background on when to use the functions in this module versus the
-functions in `DOM.Attribute`.
+functions in `Dom.Attribute`.
 
 @docs bool, string, int, float
 
@@ -26,9 +26,9 @@ import Json.Encode
 *value* and the second argument gives the *key*
 
     [ "controls"
-      |> DOM.Property.bool True
+      |> Dom.Property.bool True
     ]
-      |> DOM.Node.leaf "video"
+      |> Dom.Node.leaf "video"
 
 -}
 bool : Bool -> String -> VirtualDom.Property msg
@@ -43,10 +43,10 @@ bool value key =
 *value* and the second argument gives the *key*
 
     "Hello World!"
-      |> DOM.Element.textWrapper "p"
-      |> DOM.Element.withAttributes
+      |> Dom.Element.textWrapper "p"
+      |> Dom.Element.withAttributes
         [ "title"
-          |> DOM.Property.string "Hello, again!"
+          |> Dom.Property.string "Hello, again!"
         ]
 
 -}
@@ -61,9 +61,9 @@ string value key =
 *value* and the second argument gives the *key*
 
     [ "rows"
-      |> DOM.Property.int 10
+      |> Dom.Property.int 10
     ]
-      |> DOM.Node.leaf "textarea"
+      |> Dom.Node.leaf "textarea"
 
 
 -}
@@ -78,15 +78,15 @@ int value key =
 the *value* and the second argument gives the *key*
 
     [ "type"
-      |> DOM.Property.string "number"
+      |> Dom.Property.string "number"
     , "min"
-      |> DOM.Property.int 0
+      |> Dom.Property.int 0
     , "max"
-      |> DOM.Property.int 1
+      |> Dom.Property.int 1
     , "step"
-      |> DOM.Property.float 0.1
+      |> Dom.Property.float 0.1
     ]
-      |> DOM.Node.leaf "input"
+      |> Dom.Node.leaf "input"
 
 -}
 float : Float -> String -> VirtualDom.Property msg

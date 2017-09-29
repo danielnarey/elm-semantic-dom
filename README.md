@@ -21,8 +21,7 @@ style, where data flows through a series of functions in an easily readable way,
 from top to bottom and left to right.
 8. Functions are also written to avoid unused arguments, with additional
 "custom" functions available for rarely-used cases.
-9. `DOM` is capitalized in the module naming scheme to avoid confusion with
-*elm-lang/dom*
+9. Not to be confused with *elm-lang/dom*.
 10. Constructive suggestions are welcome!
 
 

@@ -1,4 +1,4 @@
-module DOM.Event exposing
+module Dom.Event exposing
   ( action, capture, submit, custom, customWithOptions )
 
 {-| The functions in this module may be used to construct event attributes,
@@ -17,8 +17,8 @@ import Json.Decode
 import Dict exposing (Dict)
 
 
-{-| Let's define an *action* as an DOM event that triggers something else to
-happen, but does not capture an input value. To handle an action on a DOM
+{-| Let's define an *action* as an Dom event that triggers something else to
+happen, but does not capture an input value. To handle an action on a Dom
 element, we need to construct an attribute with an
 [event name](https://developer.mozilla.org/en-US/docs/Web/Events) and a
 message that will be sent to the Elm program's update function.
@@ -32,9 +32,9 @@ values belonging to a programmer-defined type. Here's an abbreviated example:
 
     plusButton =
       "+"
-        |> DOM.Node.textWrapper "button"
+        |> Dom.Node.textWrapper "button"
           [ "click"
-            |> DOM.Event.action Increment
+            |> Dom.Event.action Increment
           ]
 
 See the
@@ -66,9 +66,9 @@ Here's another abbreviated example:
 
     inputElement =
       [ "input"
-        |> DOM.Event.capture Input
+        |> Dom.Event.capture Input
       ]
-        |> DOM.Node.leaf "input"
+        |> Dom.Node.leaf "input"
 
 
 See the
@@ -113,10 +113,10 @@ Here's another abbreviated example:
 
     myForm =
       formElements
-        |> DOM.Element.container "form"
-        |> DOM.Element.withAttributes
+        |> Dom.Element.container "form"
+        |> Dom.Element.withAttributes
           [ formElementIds
-            |> DOM.Event.submit SubmitForm
+            |> Dom.Event.submit SubmitForm
           ]
 
 -}

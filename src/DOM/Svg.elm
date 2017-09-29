@@ -1,31 +1,31 @@
-module DOM.Svg exposing
+module Dom.Svg exposing
   ( leaf, textWrapper, container, element, wrapNodes )
 
 {-|
 
-This module contains helper functions for constructing `DOM.Type.Element`
+This module contains helper functions for constructing `Dom.Type.Element`
 records with the SVG namespace designation. Use these functions for any SVG
-tags in your DOM.
+tags in your Dom.
 
-# DOM.Node constructors
+# Dom.Node constructors
 These constructors wrap `VirtualDom.node`, with the same pattern as the
-functions in the DOM.Node module
+functions in the Dom.Node module
 @docs leaf, textWrapper, container
 
-# DOM.Element constructors
+# Dom.Element constructors
 @docs element, wrapNodes
 -}
 
 import VirtualDom
 import Json.Encode
-import DOM.Element
-import DOM
+import Dom.Element
+import Dom
 
 
 {-| Construct a leaf node in the SVG namespace
 
 -}
-leaf : String -> List (DOM.Property msg) -> DOM.Node msg
+leaf : String -> List (Dom.Property msg) -> Dom.Node msg
 leaf htmlTag attributeList =
   []
     |> VirtualDom.node htmlTag
@@ -41,7 +41,7 @@ leaf htmlTag attributeList =
 {-| Construct a node with internal text in the SVG namespace
 
 -}
-textWrapper : String -> List (DOM.Property msg) -> String -> DOM.Node msg
+textWrapper : String -> List (Dom.Property msg) -> String -> Dom.Node msg
 textWrapper htmlTag attributeList someText =
   [ someText
     |> VirtualDom.text
@@ -58,7 +58,7 @@ textWrapper htmlTag attributeList someText =
 {-| Construct a node in the SVG namespace that contains other nodes
 
 -}
-container : String -> List (DOM.Property msg) -> List (DOM.Node msg) -> DOM.Node msg
+container : String -> List (Dom.Property msg) -> List (Dom.Node msg) -> Dom.Node msg
 container htmlTag attributeList childList =
   childList
     |> VirtualDom.node htmlTag
@@ -71,13 +71,13 @@ container htmlTag attributeList childList =
 
 
 {-| Construct an element record in the SVG namespace, with the tag given as a
-string argument; same pattern as `DOM.Element.leaf`
+string argument; same pattern as `Dom.Element.leaf`
 
     "circle"
-      |> DOM.Svg.element
+      |> Dom.Svg.element
 
 -}
-element : String -> DOM.Element msg
+element : String -> Dom.Element msg
 element svgTag =
   { tag = svgTag
   , attributes = []
@@ -93,10 +93,10 @@ element svgTag =
 argument gives the tag, and the second argument gives a list of child nodes
 
     myPolygonNodes
-      |> DOM.Svg.wrapNodes "g"
+      |> Dom.Svg.wrapNodes "g"
 
 -}
-wrapNodes : String -> List (DOM.Node msg) -> DOM.Element msg
+wrapNodes : String -> List (Dom.Node msg) -> Dom.Element msg
 wrapNodes htmlTag childNodes =
   { tag = htmlTag
   , attributes = []

@@ -1,4 +1,4 @@
-module DOM.Lazy exposing
+module Dom.Lazy exposing
   ( toNode, container, eval )
 
 {-| Support for the VirtualDom `lazy` optimization
@@ -11,7 +11,7 @@ From *elm-lang/html* documentation:
 >
 > Rather than immediately applying functions to their arguments, the `lazy`
 > functions just bundle the function and arguments up for later. When diffing
-> the old and new virtual DOM, it checks to see if all the arguments are equal.
+> the old and new virtual Dom, it checks to see if all the arguments are equal.
 > If so, it skips calling the function!
 >
 > This is a really cheap test and often makes things a lot faster, but definitely
@@ -21,22 +21,22 @@ From *elm-lang/html* documentation:
 
 -}
 
-import DOM.Element
-import DOM
+import Dom.Element
+import Dom
 
 import VirtualDom
 
-{-| A lazy version of `DOM.Element.toNode`
+{-| A lazy version of `Dom.Element.toNode`
 -}
-toNode : DOM.Element msg -> VirtualDom.Node msg
+toNode : Dom.Element msg -> VirtualDom.Node msg
 toNode =
-  VirtualDom.lazy DOM.Element.toNode
+  VirtualDom.lazy Dom.Element.toNode
 
 
-{-| Apply `DOM.Lazy.toNode` to all of the child nodes when constructing an
+{-| Apply `Dom.Lazy.toNode` to all of the child nodes when constructing an
 element container
 -}
-container : String -> List (DOM.Element msg) -> DOM.Element msg
+container : String -> List (Dom.Element msg) -> Dom.Element msg
 container htmlTag childList =
   { tag = htmlTag
   , attributes = []
@@ -52,6 +52,6 @@ container htmlTag childList =
 
 {-| Alias for `VirtualDom.lazy`
 -}
-eval : (a -> DOM.Node msg) -> a -> DOM.Node msg
+eval : (a -> Dom.Node msg) -> a -> Dom.Node msg
 eval =
   VirtualDom.lazy

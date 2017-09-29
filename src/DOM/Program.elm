@@ -1,4 +1,4 @@
-module DOM.Program exposing
+module Dom.Program exposing
   ( setup, onLoad
   , update, updateWithCmds
   , subscribe, subscribeWithParams
@@ -12,12 +12,12 @@ This module contains pipeline functions that can be helpful when setting up an
 Elm program for initial testing and adding features as you go.
 
 Construct a static program with just `setup` and `run` to test your initial
-model and view. Then add interaction with `update`. Add DOM effects, HTTP
+model and view. Then add interaction with `update`. Add Dom effects, HTTP
 requests, and so on with `onLoad` and `updateWithCmds`. Add ports with
 `subscribe` or `subscribeWithParams`. Use `runWithFlags` to pass data to your
 initial model.
 
-The `DOM.Program.run` function is an alias for `VirtualDom.program`, so just use
+The `Dom.Program.run` function is an alias for `VirtualDom.program`, so just use
 that if you want to set up a program in the standard way.
 
 # Basic
@@ -38,7 +38,7 @@ that if you want to set up a program in the standard way.
 -}
 
 import VirtualDom
-import DOM
+import Dom
 
 
 {-| Type alias for arguments to `VirtualDom.program`
@@ -47,7 +47,7 @@ type alias Setup model msg =
   { init : (model, Cmd msg)
   , update : msg -> model -> (model, Cmd msg)
   , subscriptions : model -> Sub msg
-  , view : model -> DOM.Node msg
+  , view : model -> Dom.Node msg
   }
 
 
@@ -64,7 +64,7 @@ the view doesn't update):
         |> Elm.Program.run
 
 -}
-setup : (model -> DOM.Node msg) -> model -> Setup model msg
+setup : (model -> Dom.Node msg) -> model -> Setup model msg
 setup viewFunction initialModel =
   { init = (initialModel, Cmd.none)
   , update = always (flip (,) Cmd.none)
@@ -191,6 +191,6 @@ runWithFlags initializer programSetup =
 
 {-| Alias for `VirtualDom.programWithFlags`
 -}
-customWithFlags : { init : flags -> (model, Cmd msg), update : msg -> model -> (model, Cmd msg), subscriptions : model -> Sub msg, view : model -> DOM.Node msg } -> Program flags model msg
+customWithFlags : { init : flags -> (model, Cmd msg), update : msg -> model -> (model, Cmd msg), subscriptions : model -> Sub msg, view : model -> Dom.Node msg } -> Program flags model msg
 customWithFlags =
   VirtualDom.programWithFlags

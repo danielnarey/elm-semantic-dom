@@ -1,4 +1,4 @@
-module DOM.Style exposing
+module Dom.Style exposing
   ( toProperty )
 
 {-| Construct a `style` property from a list of style declarations
@@ -6,12 +6,12 @@ module DOM.Style exposing
 @docs toProperty
 
 -}
-import DOM
+import Dom
 import VirtualDom
 
 
 {-| Alias for `VirtualDom.style`
 -}
-toProperty : List (String, String) -> DOM.Property msg
+toProperty : List (String, String) -> Dom.Property msg
 toProperty =
   VirtualDom.style

@@ -1,4 +1,4 @@
-module DOM.Element exposing
+module Dom.Element exposing
   ( leaf, textWrapper, container, wrapNodes
   , toNode
   , withClasses, addClass, removeClass
@@ -12,18 +12,18 @@ module DOM.Element exposing
 {-|
 
 This module contains functions for constructing, modifying, and rendering
-`DOM.Element` records.
+`Dom.Element` records.
 
 By using a record to temporarily store data about a node, we can partially
 construct that node with some data, but delay building it until all of the data
 has been assembled. In this way, all of a node's data is available to be
 modified until it is either placed in a container element or passed as an
-argument to the `DOM.Element.toNode` function.
+argument to the `Dom.Element.toNode` function.
 
 The rendering function wraps up the data collected in the element record as
 arguments to `VirtualDom.node`. There is minimal overhead with this approach,
 but where performance or memory use is of particular concern, it will be better
-to construct nodes directly with the functions in module `DOM.Node`, or by using
+to construct nodes directly with the functions in module `Dom.Node`, or by using
 the standard *elm-lang/html* and *elm-lang/svg* packages.
 
 
@@ -61,7 +61,7 @@ the standard *elm-lang/html* and *elm-lang/svg* packages.
 
 -}
 
-import DOM
+import Dom
 
 import VirtualDom
 import Json.Encode
@@ -72,10 +72,10 @@ import Json.Encode
 {-| Construct a leaf element (an element without children), with the tag given
 as a string argument
 
-    DOM.Element.leaf "hr"
+    Dom.Element.leaf "hr"
 
 -}
-leaf : String -> DOM.Element msg
+leaf : String -> Dom.Element msg
 leaf htmlTag =
   { tag = htmlTag
   , attributes = []
@@ -91,10 +91,10 @@ leaf htmlTag =
 the second argument gives the internal text
 
     "Hello World!"
-      |> DOM.Element.textWrapper "p"
+      |> Dom.Element.textWrapper "p"
 
 -}
-textWrapper : String -> String -> DOM.Element msg
+textWrapper : String -> String -> Dom.Element msg
 textWrapper htmlTag someText =
   { tag = htmlTag
   , attributes = []
@@ -110,12 +110,12 @@ textWrapper htmlTag someText =
 the tag, and the second argument gives a list of child elements
 
     [ "Hello World!"
-      |> DOM.Element.textWrapper "p"
+      |> Dom.Element.textWrapper "p"
     ]
-      |> DOM.Element.container "div"
+      |> Dom.Element.container "div"
 
 -}
-container : String -> List (DOM.Element msg) -> DOM.Element msg
+container : String -> List (Dom.Element msg) -> Dom.Element msg
 container htmlTag childList =
   { tag = htmlTag
   , attributes = []
@@ -133,12 +133,12 @@ container htmlTag childList =
 argument gives the tag, and the second argument gives a list of child nodes
 
     [ "Hello World!"
-      |> DOM.Node.textWrapper "p" []
+      |> Dom.Node.textWrapper "p" []
     ]
-      |> DOM.Element.wrapNodes "div"
+      |> Dom.Element.wrapNodes "div"
 
 -}
-wrapNodes : String -> List (DOM.Node msg) -> DOM.Element msg
+wrapNodes : String -> List (Dom.Node msg) -> Dom.Element msg
 wrapNodes htmlTag childNodes =
   { tag = htmlTag
   , attributes = []
@@ -152,16 +152,16 @@ wrapNodes htmlTag childNodes =
 
 -- RENDERING
 
-{-| Generate a `VirtualDom.Node` from a `DOM.Type.Element` record
+{-| Generate a `VirtualDom.Node` from a `Dom.Type.Element` record
 
     [ "Hello World!"
-      |> DOM.Element.textWrapper "p"
+      |> Dom.Element.textWrapper "p"
     ]
-      |> DOM.Element.container "div"
-      |> DOM.Element.toNode
+      |> Dom.Element.container "div"
+      |> Dom.Element.toNode
 
 -}
-toNode : DOM.Element msg -> VirtualDom.Node msg
+toNode : Dom.Element msg -> VirtualDom.Node msg
 toNode element =
   let
     consClassName attributeList =
@@ -244,16 +244,16 @@ called
 
     myElement =
       [ "Hello World!"
-        |> DOM.Element.textWrapper "p"
-        |> DOM.Element.withClasses
+        |> Dom.Element.textWrapper "p"
+        |> Dom.Element.withClasses
           [ "size-large"
           , "weight-bold"
           ]
       ]
-        |> DOM.Element.container "div"
+        |> Dom.Element.container "div"
 
 -}
-withClasses : List String -> DOM.Element msg -> DOM.Element msg
+withClasses : List String -> Dom.Element msg -> Dom.Element msg
 withClasses classList n =
   { n
   | classes = classList
@@ -263,10 +263,10 @@ withClasses classList n =
 {-| Add a new class to the existing classes of an element
 
     myElement
-      |> DOM.Element.addClass "bordered-box"
+      |> Dom.Element.addClass "bordered-box"
 
 -}
-addClass : String -> DOM.Element msg -> DOM.Element msg
+addClass : String -> Dom.Element msg -> Dom.Element msg
 addClass newClass n =
   { n
   | classes =
@@ -277,10 +277,10 @@ addClass newClass n =
 {-| Remove a particular class from an element, retaining other assigned classes
 
     myElement
-      |> DOM.Element.removeClass "bordered-box"
+      |> Dom.Element.removeClass "bordered-box"
 
 -}
-removeClass : String -> DOM.Element msg -> DOM.Element msg
+removeClass : String -> Dom.Element msg -> Dom.Element msg
 removeClass classToRemove n =
   { n
   | classes =
@@ -296,7 +296,7 @@ removeClass classToRemove n =
 
     (You get the pattern by this point...)
 -}
-withAttributes : List (VirtualDom.Property msg) -> DOM.Element msg -> DOM.Element msg
+withAttributes : List (VirtualDom.Property msg) -> Dom.Element msg -> Dom.Element msg
 withAttributes attributeList n =
   { n
   | attributes = attributeList
@@ -305,7 +305,7 @@ withAttributes attributeList n =
 
 {-| Add a new attribute to the existing attributes of an element
 -}
-addAttribute : VirtualDom.Property msg -> DOM.Element msg -> DOM.Element msg
+addAttribute : VirtualDom.Property msg -> Dom.Element msg -> Dom.Element msg
 addAttribute newAttribute n =
   { n
   | attributes =
@@ -318,7 +318,7 @@ addAttribute newAttribute n =
 
 {-| Update an element's text, replacing any existing text
 -}
-withText : String -> DOM.Element msg -> DOM.Element msg
+withText : String -> Dom.Element msg -> Dom.Element msg
 withText someText n =
   { n
   | text = someText
@@ -327,7 +327,7 @@ withText someText n =
 
 {-| Append new text to an element, after any existing text
 -}
-appendText : String -> DOM.Element msg -> DOM.Element msg
+appendText : String -> Dom.Element msg -> Dom.Element msg
 appendText moreText n =
   { n
   | text =
@@ -338,7 +338,7 @@ appendText moreText n =
 
 {-| Prepend new text to an element, before any existing text
 -}
-prependText : String -> DOM.Element msg -> DOM.Element msg
+prependText : String -> Dom.Element msg -> Dom.Element msg
 prependText moreText n =
   { n
   | text =
@@ -351,7 +351,7 @@ prependText moreText n =
 
 {-| Update an element's children, replacing any existing children
 -}
-withChildren : List (DOM.Element msg) -> DOM.Element msg -> DOM.Element msg
+withChildren : List (Dom.Element msg) -> Dom.Element msg -> Dom.Element msg
 withChildren childList n =
   { n
   | children =
@@ -362,7 +362,7 @@ withChildren childList n =
 
 {-| Append a new child to an element, after any existing children
 -}
-appendChild : DOM.Element msg -> DOM.Element msg -> DOM.Element msg
+appendChild : Dom.Element msg -> Dom.Element msg -> Dom.Element msg
 appendChild newChild n =
   { n
   | children =
@@ -375,7 +375,7 @@ appendChild newChild n =
 
 {-| Prepend a new child to an element, before any existing children
 -}
-prependChild : DOM.Element msg -> DOM.Element msg -> DOM.Element msg
+prependChild : Dom.Element msg -> Dom.Element msg -> Dom.Element msg
 prependChild newChild n =
   { n
   | children =
@@ -389,7 +389,7 @@ prependChild newChild n =
 {-| Update an element's children, with a list of native `VirtualDom` nodes given
 as the first argument in place of a list of element records
 -}
-withChildNodes : List (DOM.Node msg) -> DOM.Element msg -> DOM.Element msg
+withChildNodes : List (Dom.Node msg) -> Dom.Element msg -> Dom.Element msg
 withChildNodes nodeList n =
   { n
   | children =
@@ -401,7 +401,7 @@ withChildNodes nodeList n =
 
 {-| Set an element's XML namespace
 -}
-setNamespace : String -> DOM.Element msg -> DOM.Element msg
+setNamespace : String -> Dom.Element msg -> Dom.Element msg
 setNamespace url n =
   { n
   | namespace = url
@@ -412,7 +412,7 @@ setNamespace url n =
 
 {-| Returns `True` if the element has children
 -}
-hasChildren : DOM.Element msg -> Bool
+hasChildren : Dom.Element msg -> Bool
 hasChildren element =
   case element.children of
     [] ->
@@ -424,7 +424,7 @@ hasChildren element =
 
 {-| Returns `True` if the element has text
 -}
-hasText : DOM.Element msg -> Bool
+hasText : Dom.Element msg -> Bool
 hasText element =
   case element.text of
     "" ->
@@ -437,7 +437,7 @@ hasText element =
 {-| Returns `True` if the element's class list contains the name given in the
 first argument
 -}
-hasClass : String -> DOM.Element msg -> Bool
+hasClass : String -> Dom.Element msg -> Bool
 hasClass name element =
   element.classes
     |> List.member name
