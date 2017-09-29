@@ -24,7 +24,7 @@ from top to bottom and left to right.
 9. Unfortunately, the module naming scheme I chose conflicts with
 *elm-lang/dom* (I couldn't come up with an acceptable alternative), but I am
 working on a separate package that will wrap *elm-lang/dom* in order to avoid
-the conflict when there is a need to manage DOM effects.
+the conflict when there is a need to manage Dom effects.
 10. Constructive suggestions are welcome!
 
 
@@ -33,15 +33,15 @@ the conflict when there is a need to manage DOM effects.
 
 | Module        | Types | Constructors | Modifiers | Rendering | Queries |
 | --- | --- | --- | --- | --- | --- |
-| DOM           | Node<br>Property<br>Element | | | | |
-| DOM.Program   | Setup | setup | onLoad<br>update<br>updateWithCmds<br>subscribe<br> subscribeWithParams | run<br>runWithFlags<br>customWithFlags | |
-| DOM.Node      | | leaf<br>textWrapper<br>container | | | |
-| DOM.Element   | | leaf<br>textWrapper<br>container<br>wrapNodes | withClasses<br>addClass<br>removeClass<br>withAttributes<br>addAttribute<br>withText<br>appendText<br>prependText<br>withChildren<br>appendChild<br>prependChild<br>withChildNodes<br>setNamespace | toNode | hasChildren<br>hasText<br>hasClass
-| DOM.Property  | | bool<br>string<br>int<br>float | | | |
-| DOM.Attribute | | string<br>int<br>float<br>namespaced | | | |
-| DOM.Event     | | action<br>capture<br>submit<br>custom<br> customWithOptions | | | |
-| DOM.Style     | | toProperty | | | |
-| DOM.Keyed     | | container<br>node | | | |
-| DOM.Lazy      | | container | | toNode<br>eval | |
-| DOM.Svg       | | leaf<br>textWrapper<br>container<br>element<br>wrapNodes | | | |
-| DOM.Text      | | node | | | | |
+| Dom           | Node<br>Property<br>Element | | | | |
+| Dom.Program   | Setup | setup | onLoad<br>update<br>updateWithCmds<br>subscribe<br> subscribeWithParams | run<br>runWithFlags<br>customWithFlags | |
+| Dom.Node      | | leaf<br>textWrapper<br>container | | | |
+| Dom.Element   | | leaf<br>textWrapper<br>container<br>wrapNodes | withClasses<br>addClass<br>removeClass<br>withAttributes<br>addAttribute<br>withText<br>appendText<br>prependText<br>withChildren<br>appendChild<br>prependChild<br>withChildNodes<br>setNamespace | toNode | hasChildren<br>hasText<br>hasClass
+| Dom.Property  | | bool<br>string<br>int<br>float | | | |
+| Dom.Attribute | | string<br>int<br>float<br>namespaced | | | |
+| Dom.Event     | | action<br>capture<br>submit<br>custom<br> customWithOptions | | | |
+| Dom.Style     | | toProperty | | | |
+| Dom.Keyed     | | container<br>node | | | |
+| Dom.Lazy      | | container | | toNode<br>eval | |
+| Dom.Svg       | | leaf<br>textWrapper<br>container<br>element<br>wrapNodes | | | |
+| Dom.Text      | | node | | | | |
