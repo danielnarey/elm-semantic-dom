@@ -2,6 +2,8 @@ module Dom.Text exposing
   ( node )
 
 {-| Construct a text node
+
+@docs node
 -}
 
 import VirtualDom
