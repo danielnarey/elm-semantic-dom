@@ -24,7 +24,7 @@ from top to bottom and left to right.
 9. Unfortunately, the module naming scheme I chose conflicts with
 *elm-lang/dom* (I couldn't come up with an acceptable alternative), but I am
 working on a separate package that will wrap *elm-lang/dom* in order to avoid
-the conflict when there is a need to manage Dom effects.
+the conflict when there is a need to manage DOM effects.
 10. Constructive suggestions are welcome!
 
 
