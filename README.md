@@ -21,7 +21,10 @@ style, where data flows through a series of functions in an easily readable way,
 from top to bottom and left to right.
 8. Functions are also written to avoid unused arguments, with additional
 "custom" functions available for rarely-used cases.
-9. Not to be confused with *elm-lang/dom*.
+9. Unfortunately, the module naming scheme I chose conflicts with
+*elm-lang/dom* (I couldn't come up with an acceptable alternative), but I am
+working on a separate package that will wrap *elm-lang/dom* in order to avoid
+the conflict when there is a need to manage DOM effects.
 10. Constructive suggestions are welcome!
 
 
