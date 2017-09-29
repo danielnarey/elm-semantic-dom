@@ -60,8 +60,8 @@ the view doesn't update):
 
     main =
       initialModel
-        |> Elm.Program.setup view
-        |> Elm.Program.run
+        |> Dom.Program.setup view
+        |> Dom.Program.run
 
 -}
 setup : (model -> Dom.Node msg) -> model -> Setup model msg

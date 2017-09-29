@@ -3,9 +3,9 @@ module Dom.Svg exposing
 
 {-|
 
-This module contains helper functions for constructing `Dom.Type.Element`
+This module contains helper functions for constructing `Dom.Element`
 records with the SVG namespace designation. Use these functions for any SVG
-tags in your Dom.
+tags in your DOM.
 
 # Dom.Node constructors
 These constructors wrap `VirtualDom.node`, with the same pattern as the

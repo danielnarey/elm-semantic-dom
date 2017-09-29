@@ -17,8 +17,8 @@ import Json.Decode
 import Dict exposing (Dict)
 
 
-{-| Let's define an *action* as an Dom event that triggers something else to
-happen, but does not capture an input value. To handle an action on a Dom
+{-| Let's define an *action* as an DOM event that triggers something else to
+happen, but does not capture an input value. To handle an action on a DOM
 element, we need to construct an attribute with an
 [event name](https://developer.mozilla.org/en-US/docs/Web/Events) and a
 message that will be sent to the Elm program's update function.
