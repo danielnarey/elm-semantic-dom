@@ -7,16 +7,18 @@
         "./src"
     ],
     "exposed-modules": [
-        "DOM",
-        "DOM.Node",
-        "DOM.Element",
-        "DOM.Property",
-        "DOM.Attribute",
-        "DOM.Event",
-        "DOM.Style",
-        "DOM.Lazy",
+        "Dom",
+        "Dom.Node",
+        "Dom.Element",
+        "Dom.Property",
+        "Dom.Attribute",
+        "Dom.Event",
+        "Dom.Style",
+        "Dom.Lazy",
         "Dom.Keyed",
-        "DOM.Svg"
+        "Dom.Svg",
+        "Dom.Text",
+        "Dom.Program"
     ],
     "dependencies": {
         "elm-lang/core": "5.1.1 <= v < 6.0.0",

@@ -30,7 +30,7 @@ that if you want to set up a program in the standard way.
 @docs subscribe, subscribeWithParams
 
 # Flags
-@docs runWithFlags
+@docs runWithFlags, customWithFlags
 
 # Type alias
 @docs Setup
