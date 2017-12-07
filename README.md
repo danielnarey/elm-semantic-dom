@@ -41,6 +41,7 @@ the conflict when there is a need to manage DOM effects.
 | Dom.Attribute | | string<br>int<br>float<br>namespaced | | | |
 | Dom.Event     | | action<br>capture<br>submit<br>custom<br> customWithOptions | | | |
 | Dom.Style     | | toProperty | | | |
+| Dom.Classes   | | toProperty | | | |
 | Dom.Keyed     | | container<br>node | | | |
 | Dom.Lazy      | | container | | toNode<br>eval | |
 | Dom.Svg       | | leaf<br>textWrapper<br>container<br>element<br>wrapNodes | | | |
