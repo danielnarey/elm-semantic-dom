@@ -1,4 +1,4 @@
-module Dom.Classes exposing
+module Dom.Class exposing
   ( toProperty )
 
 {-| Construct a `className` property from a list of classes

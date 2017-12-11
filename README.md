@@ -21,14 +21,23 @@ style, where data flows through a series of functions in an easily readable way,
 from top to bottom and left to right.
 8. Functions are also written to avoid unused arguments, with additional
 "custom" functions available for rarely-used cases.
-9. Unfortunately, the module naming scheme I chose conflicts with
-*elm-lang/dom* (I couldn't come up with an acceptable alternative), but I am
-working on a separate package that will wrap *elm-lang/dom* in order to avoid
-the conflict when there is a need to manage DOM effects.
-10. Constructive suggestions are welcome!
+9. The idea behind my semantic naming schema is that the module name should
+always be used when invoking a function; it improves the readability and
+maintainability of Elm code, and you will never have to resolve errors due to
+conflicting function names from imported modules. So, when you import a module
+from this package, I recommend that you don't expose any function names. Then
+you can use `Dom.Element.container` and `Dom.Keyed.container` in the same module
+without overthinking it.
+10. I am aware that module naming scheme I chose conflicts with *elm-lang/dom*,
+which could be a problem but doesn't have to be. To avoid a compiler error when
+there is a need to manage DOM effects, I created
+*danielnarey/elm-semantic-effects* to wrap *elm-lang/dom*. When the two "dom"
+are not both listed as imports in the `elm-package.json` file, there is no
+compiler error, even if both packages are dependencies.
+11. Constructive suggestions are welcome!
 
 
-### Package Reference
+### Package Reference ([view on Github](http://github.com/danielnarey/elm-semantic-dom#package-reference))
 
 
 | Module        | Types | Constructors | Modifiers | Rendering | Queries |
@@ -41,7 +50,7 @@ the conflict when there is a need to manage DOM effects.
 | Dom.Attribute | | string<br>int<br>float<br>namespaced | | | |
 | Dom.Event     | | action<br>capture<br>submit<br>custom<br> customWithOptions | | | |
 | Dom.Style     | | toProperty | | | |
-| Dom.Classes   | | toProperty | | | |
+| Dom.Class     | | toProperty | | | |
 | Dom.Keyed     | | container<br>node | | | |
 | Dom.Lazy      | | container | | toNode<br>eval | |
 | Dom.Svg       | | leaf<br>textWrapper<br>container<br>element<br>wrapNodes | | | |

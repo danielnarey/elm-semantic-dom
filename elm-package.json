@@ -1,8 +1,8 @@
 {
-    "version": "1.1.0",
+    "version": "2.0.0",
     "summary": "Syntactic sugar for cooking with Elm VirtualDom",
     "repository": "https://github.com/danielnarey/elm-semantic-dom.git",
-    "license": "BSD3",
+    "license": "BSD2",
     "source-directories": [
         "./src"
     ],
@@ -14,7 +14,7 @@
         "Dom.Attribute",
         "Dom.Event",
         "Dom.Style",
-        "Dom.Classes",
+        "Dom.Class",
         "Dom.Lazy",
         "Dom.Keyed",
         "Dom.Svg",
