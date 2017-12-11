@@ -37,7 +37,7 @@ compiler error, even if both packages are dependencies.
 11. Constructive suggestions are welcome!
 
 
-### Package Reference ([view on Github](http://github.com/danielnarey/elm-semantic-dom#package-reference))
+### Package Reference
 
 
 | Module        | Types | Constructors | Modifiers | Rendering | Queries |
