@@ -77,6 +77,13 @@ setup viewFunction initialModel =
 {-| Route messages generated in the program to a function that will update the
 initial model; the first argument is the update function, and the second
 argument is the setup record
+
+    main =
+      initialModel
+        |> Dom.Program.setup view
+        |> Dom.Program.update update
+        |> Dom.Program.run
+
 -}
 update : (msg -> model -> model) -> Setup model msg -> Setup model msg
 update updateFunction programSetup =
@@ -103,6 +110,16 @@ run =
 {-| Modify your program setup to perform a list of commands when the program
 loads
 
+    main =
+      initialModel
+        |> Dom.Program.setup view
+        |> Dom.Program.onLoad
+          [ doSomething
+          , doSomethingElse
+          ]
+        |> Dom.Program.update update
+        |> Dom.Program.run
+
 See the
 [Elm Architecture](https://guide.elm-lang.org/architecture/)
 documentation to find out more about commands.
@@ -121,6 +138,11 @@ onLoad cmds programSetup =
 {-| Handle updates in a with a function that can also produce commands in
 response to messages
 
+      initialModel
+        |> Dom.Program.setup view
+        |> Dom.Program.updateWithCmds update
+        |> Dom.Program.run
+
 See the
 [Elm Architecture](https://guide.elm-lang.org/architecture/)
 documentation to find out more about commands.
@@ -135,6 +157,15 @@ updateWithCmds updateFunction programSetup =
 
 {-| Receive data from ports
 
+    initialModel
+      |> Dom.Program.setup view
+      |> Dom.Program.updateWithCmds update
+      |> Dom.Program.subscribe
+        [ listener1
+        , listener2
+        ]
+      |> Dom.Program.run
+
 See the
 [Elm Architecture](https://guide.elm-lang.org/architecture/)
 documentation to find out more about ports and subscriptions.
@@ -148,6 +179,12 @@ subscribe subs programSetup =
 
 
 {-| Apply a custom function to control data flow from ports
+
+    initialModel
+      |> Dom.Program.setup view
+      |> Dom.Program.updateWithCmds update
+      |> Dom.Program.subscribeWithParams subscribe
+      |> Dom.Program.run
 
 See the
 [Elm Architecture](https://guide.elm-lang.org/architecture/)
@@ -164,6 +201,13 @@ subscribeWithParams subFunction programSetup =
 {-| Generate your initial model with data passed to your Elm program from the
 JavaScript side, with the initial model specified in your setup as a fallback
 if anything goes wrong
+
+    defaultSettings
+      |> initializer
+      |> Dom.Program.setup view
+      |> Dom.Program.updateWithCmds update
+      |> Dom.Program.subscribeWithParams subscribe
+      |> Dom.Program.runWithFlags initializer
 
 See the
 [Elm Architecture](https://guide.elm-lang.org/architecture/)

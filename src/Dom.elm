@@ -43,6 +43,7 @@ argument to the `Dom.Element.toNode` function.
 -}
 type alias Element msg =
   { tag : String
+  , id : String
   , attributes : List (Property msg)
   , classes : List String
   , children : List (Node msg)

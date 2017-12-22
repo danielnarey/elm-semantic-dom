@@ -80,6 +80,7 @@ string argument; same pattern as `Dom.Element.leaf`
 element : String -> Dom.Element msg
 element svgTag =
   { tag = svgTag
+  , id = ""
   , attributes = []
   , classes = []
   , children = []
@@ -99,6 +100,7 @@ argument gives the tag, and the second argument gives a list of child nodes
 wrapNodes : String -> List (Dom.Node msg) -> Dom.Element msg
 wrapNodes htmlTag childNodes =
   { tag = htmlTag
+  , id = ""
   , attributes = []
   , classes = []
   , children = childNodes

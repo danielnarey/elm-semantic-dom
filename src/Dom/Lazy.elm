@@ -39,6 +39,7 @@ element container
 container : String -> List (Dom.Element msg) -> Dom.Element msg
 container htmlTag childList =
   { tag = htmlTag
+  , id = ""
   , attributes = []
   , classes = []
   , children =

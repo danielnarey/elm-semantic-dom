@@ -39,19 +39,4 @@ compiler error, even if both packages are dependencies.
 
 ### Package Reference
 
-
-| Module        | Types | Constructors | Modifiers | Rendering | Queries |
-| --- | --- | --- | --- | --- | --- |
-| Dom           | Node<br>Property<br>Element | | | | |
-| Dom.Program   | Setup | setup | onLoad<br>update<br>updateWithCmds<br>subscribe<br> subscribeWithParams | run<br>runWithFlags<br>customWithFlags | |
-| Dom.Node      | | leaf<br>textWrapper<br>container | | | |
-| Dom.Element   | | leaf<br>textWrapper<br>container<br>wrapNodes | withClasses<br>addClass<br>removeClass<br>withAttributes<br>addAttribute<br>withText<br>appendText<br>prependText<br>withChildren<br>appendChild<br>prependChild<br>withChildNodes<br>setNamespace | toNode | hasChildren<br>hasText<br>hasClass
-| Dom.Property  | | bool<br>string<br>int<br>float | | | |
-| Dom.Attribute | | string<br>int<br>float<br>namespaced | | | |
-| Dom.Event     | | action<br>capture<br>submit<br>custom<br> customWithOptions | | | |
-| Dom.Style     | | toProperty | | | |
-| Dom.Class     | | toProperty | | | |
-| Dom.Keyed     | | container<br>node | | | |
-| Dom.Lazy      | | container | | toNode<br>eval | |
-| Dom.Svg       | | leaf<br>textWrapper<br>container<br>element<br>wrapNodes | | | |
-| Dom.Text      | | node | | | | |
+View on [GitHub](https://github.com/danielnarey/elm-semantic-dom#package-reference)

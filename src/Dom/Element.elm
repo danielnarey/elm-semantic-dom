@@ -1,6 +1,7 @@
 module Dom.Element exposing
   ( leaf, textWrapper, container, wrapNodes
   , toNode
+  , setId
   , withClasses, addClass, removeClass
   , withAttributes, addAttribute
   , withText, appendText, prependText
@@ -35,23 +36,28 @@ the standard *elm-lang/html* and *elm-lang/svg* packages.
 
 @docs toNode
 
-# Classes
+# Modifiers
+
+## Id
+@docs setId
+
+## Classes
 
 @docs withClasses, addClass, removeClass
 
-# Attributes
+## Attributes
 
 @docs withAttributes, addAttribute
 
-# Text
+## Text
 
 @docs withText, appendText, prependText
 
-# Children
+## Children
 
 @docs withChildren, appendChild, prependChild, withChildNodes
 
-# Namespace
+## Namespace
 
 @docs setNamespace
 
@@ -78,6 +84,7 @@ as a string argument
 leaf : String -> Dom.Element msg
 leaf htmlTag =
   { tag = htmlTag
+  , id = ""
   , attributes = []
   , classes = []
   , children = []
@@ -97,6 +104,7 @@ the second argument gives the internal text
 textWrapper : String -> String -> Dom.Element msg
 textWrapper htmlTag someText =
   { tag = htmlTag
+  , id = ""
   , attributes = []
   , classes = []
   , children = []
@@ -118,6 +126,7 @@ the tag, and the second argument gives a list of child elements
 container : String -> List (Dom.Element msg) -> Dom.Element msg
 container htmlTag childList =
   { tag = htmlTag
+  , id = ""
   , attributes = []
   , classes = []
   , children =
@@ -141,6 +150,7 @@ argument gives the tag, and the second argument gives a list of child nodes
 wrapNodes : String -> List (Dom.Node msg) -> Dom.Element msg
 wrapNodes htmlTag childNodes =
   { tag = htmlTag
+  , id = ""
   , attributes = []
   , classes = []
   , children = childNodes
@@ -152,7 +162,7 @@ wrapNodes htmlTag childNodes =
 
 -- RENDERING
 
-{-| Generate a `VirtualDom.Node` from a `Dom.Type.Element` record
+{-| Generate a `VirtualDom.Node` from a `Dom.Element` record
 
     [ "Hello World!"
       |> Dom.Element.textWrapper "p"
@@ -164,6 +174,18 @@ wrapNodes htmlTag childNodes =
 toNode : Dom.Element msg -> VirtualDom.Node msg
 toNode element =
   let
+    consId attributeList =
+      case element.id of
+        "" ->
+          attributeList
+
+        _ ->
+          ( element.id
+            |> Json.Encode.string
+            |> VirtualDom.property "id"
+          )
+            :: attributeList
+
     consClassName attributeList =
       case element.classes of
         [] ->
@@ -220,6 +242,7 @@ toNode element =
           |> consText
           |> VirtualDom.node element.tag
             ( element.attributes
+              |> consId
               |> consClassName
               |> consNamespace
             )
@@ -230,9 +253,23 @@ toNode element =
           |> consTextKeyed
           |> VirtualDom.keyedNode element.tag
             ( element.attributes
+              |> consId
               |> consClassName
               |> consNamespace
             )
+
+
+-- ID
+
+{-| Assign a unique identifier to an element; when the rendering function is
+called, the resulting node's *id* attribute will be set to this value
+
+-}
+setId : String -> Dom.Element msg -> Dom.Element msg
+setId idString n =
+  { n
+  | id = idString
+  }
 
 
 -- CLASSES

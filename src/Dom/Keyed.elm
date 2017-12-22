@@ -50,6 +50,7 @@ container htmlTag lazyChildren keyedList =
 
   in
     { tag = htmlTag
+    , id = ""
     , attributes = []
     , classes = []
     , children =
