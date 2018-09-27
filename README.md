@@ -1,3 +1,7 @@
+# Not updated for Elm 0.19
+## Check out https://github.com/visotype/elm-dom
+
+---
 
 # elm-semantic-dom: Syntactic sugar for cooking with Elm VirtualDom
 
